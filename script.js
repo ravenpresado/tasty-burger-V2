@@ -153,9 +153,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // CHECKOUT BUTTON
-    checkoutButton.addEventListener("click", function () {
-        alert("Thank you for choosing Tasty Burger! Checkout functionality is coming soon.");
+checkoutButton.addEventListener("click", function () {
+
+    let orderDetails = "YOUR ORDER SUMMARY\n\n";
+
+    cart.forEach(function (item) {
+        orderDetails += item.name + " x" + item.quantity +
+            " - ₱" + (item.price * item.quantity).toFixed(2) + "\n";
     });
+
+    const totalPrice = cart.reduce(function (total, item) {
+        return total + item.price * item.quantity;
+    }, 0);
+
+    orderDetails += "\nTotal: ₱" + totalPrice.toFixed(2);
+    orderDetails += "\n\nThank you for choosing Tasty Burger!";
+
+    alert(orderDetails);
+});
 
     // INITIAL CART DISPLAY
     updateCart();
