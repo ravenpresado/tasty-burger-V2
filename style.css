@@ -304,3 +304,182 @@ nav a:hover {
 .add-to-cart:hover {
     background-color: #8b4532;
 }
+
+
+/* =================================
+   TASTY BURGER V2 - ANIMATIONS
+================================= */
+
+/* Smooth page appearance */
+body {
+    animation: pageFadeIn 0.8s ease;
+}
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Header animation */
+.header {
+    animation: slideDown 0.8s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Heading animation */
+.section-heading {
+    animation: fadeUp 0.9s ease;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Burger card animations */
+.burger-card {
+    width: 100%;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    animation: cardAppear 0.8s ease both;
+    transition: transform 0.35s ease,
+                box-shadow 0.35s ease;
+}
+
+
+.burger-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.burger-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.burger-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.burger-card:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Card hover effect */
+.burger-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Burger image zoom */
+.burger-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+}
+
+.burger-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Navigation hover animation */
+nav a {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background-color: #bd3e2d;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Add to Cart button animation */
+.add-to-cart {
+    transition: background-color 0.3s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #8b4532;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+.add-to-cart:active {
+    transform: scale(0.96);
+}
+
+/* Favorite button animation */
+.favorite {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.favorite:hover {
+    transform: scale(1.25) rotate(-10deg);
+}
+
+/* Star hover animation */
+.star-button {
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.star-button:hover {
+    transform: scale(1.25);
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
