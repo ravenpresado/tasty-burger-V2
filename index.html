@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +13,9 @@
     <header class="header">
         <div class="container navbar">
             <div class="logo">
-                <img src="images/tasty-burger-logo.png"
-                     alt="Tasty Burger Logo">
+                <img src="images/tasty-burger-logo.png" alt="Tasty Burger Logo">
             </div>
+
             <nav>
                 <a href="#about">ABOUT</a>
                 <a href="#menu">OUR MENU</a>
@@ -22,8 +23,7 @@
                 <a href="#contact">CONTACT</a>
                 <a href="#cart" class="cart">
                     <svg width="20" height="20" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor"
-                         stroke-width="1.8">
+                         fill="none" stroke="currentColor" stroke-width="1.8">
                         <path d="M3 3h2l2.5 12h11L21 7H6"/>
                         <circle cx="9" cy="19" r="1"/>
                         <circle cx="18" cy="19" r="1"/>
@@ -37,39 +37,27 @@
     <!-- HERO SECTION -->
     <section class="hero-section">
         <div class="hero-container">
-
             <div class="hero-content">
                 <span class="hero-tag">WELCOME TO TASTY BURGER</span>
-
-                <h1>
-                    BITE INTO
-                    <span>HAPPINESS!</span>
-                </h1>
-
+                <h1>BITE INTO <span>HAPPINESS!</span></h1>
                 <p>
                     Discover delicious burgers made with juicy patties,
                     fresh ingredients, and irresistible flavors.
                     Your next favorite burger is waiting for you!
                 </p>
-
-                <a href="#menu" class="hero-button">
-                    ORDER NOW
-                </a>
+                <a href="#menu" class="hero-button">ORDER NOW</a>
             </div>
 
             <div class="hero-image">
-                <img
-                    src="images/crispy-chicken.png"
-                    alt="Delicious Tasty Burger"
-                >
+                <img src="images/crispy-chicken.png" alt="Delicious Tasty Burger">
             </div>
-
         </div>
     </section>
 
     <!-- MAIN SECTION -->
     <main class="container">
         <section class="burger-section" id="menu">
+
             <div class="section-heading">
                 <h1>OUR CRAZY BURGERS</h1>
                 <p>
@@ -81,15 +69,33 @@
                 </p>
             </div>
 
+            <!-- SEARCH AND FILTERS -->
+            <div class="burger-controls">
+                <div class="burger-search">
+                    <input
+                        type="text"
+                        id="burger-search"
+                        placeholder="Search burgers..."
+                    >
+                    <span>⌕</span>
+                </div>
+
+                <div class="burger-filters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="chicken">Chicken</button>
+                    <button class="filter-btn" data-category="beef">Beef</button>
+                    <button class="filter-btn" data-category="bacon">Bacon</button>
+                    <button class="filter-btn" data-category="vegetarian">Vegetarian</button>
+                </div>
+            </div>
+
             <!-- BURGER PRODUCTS -->
             <div class="burger-grid" id="shop">
 
-                <!-- PRODUCT 1 -->
-                <div class="burger-card">
-                    <img
-                        src="images/crispy-chicken.png"
-                        alt="Crispy Chicken Burger"
-                    >
+                <!-- ORIGINAL BURGERS -->
+
+                <div class="burger-card" data-category="chicken">
+                    <img src="images/crispy-chicken.png" alt="Crispy Chicken Burger">
                     <div class="rating">
                         <button class="star-button active" data-value="1">★</button>
                         <button class="star-button active" data-value="2">★</button>
@@ -101,25 +107,14 @@
                         <h3>Crispy Chicken</h3>
                         <button class="favorite">♡</button>
                     </div>
-                    <p class="description">
-                        Crispy chicken with fresh lettuce and creamy sauce.
-                    </p>
+                    <p class="description">Crispy chicken with fresh lettuce and creamy sauce.</p>
                     <span class="price">₱99.15</span>
-
-                    <button class="add-to-cart"
-                            data-name="Crispy Chicken"
-                            data-price="99.15">
-                        Add to Cart
-                    </button>
+                    <button class="add-to-cart" data-name="Crispy Chicken" data-price="99.15">Add to Cart</button>
                 </div>
 
-                <!-- PRODUCT 2 -->
-                <div class="burger-card">
-                    <img
-                        src="images/ultimate-bacon.png"
-                        alt="Ultimate Bacon Burger"
-                     >
-                     <div class="rating">
+                <div class="burger-card" data-category="beef">
+                    <img src="images/ultimate-bacon.png" alt="Ultimate Bacon Burger">
+                    <div class="rating">
                         <button class="star-button active" data-value="1">★</button>
                         <button class="star-button active" data-value="2">★</button>
                         <button class="star-button active" data-value="3">★</button>
@@ -130,24 +125,13 @@
                         <h3>Ultimate Bacon</h3>
                         <button class="favorite">♡</button>
                     </div>
-                    <p class="description">
-                        Juicy beef patty topped with bacon and cheese.
-                    </p>
+                    <p class="description">Juicy beef patty topped with bacon and cheese.</p>
                     <span class="price">₱99.32</span>
-
-                    <button class="add-to-cart"
-                            data-name="Ultimate-Bacon"
-                            data-price="99.32">
-                        Add to Cart
-                    </button>
+                    <button class="add-to-cart" data-name="Ultimate Bacon" data-price="99.32">Add to Cart</button>
                 </div>
 
-                <!-- PRODUCT 3 -->
-                <div class="burger-card">
-                    <img
-                        src="images/black-sheep.png"
-                        alt="Black Sheep Burger"
-                    >
+                <div class="burger-card" data-category="beef">
+                    <img src="images/black-sheep.png" alt="Black Sheep Burger">
                     <div class="rating">
                         <button class="star-button active" data-value="1">★</button>
                         <button class="star-button active" data-value="2">★</button>
@@ -155,29 +139,17 @@
                         <button class="star-button active" data-value="4">★</button>
                         <button class="star-button active" data-value="5">★</button>
                     </div>
-
                     <div class="product-title">
                         <h3>Black Sheep</h3>
                         <button class="favorite">♡</button>
                     </div>
-                    <p class="description">
-                        Delicious grilled beef with fresh vegetables.
-                    </p>
+                    <p class="description">Delicious grilled beef with fresh vegetables.</p>
                     <span class="price">₱69.15</span>
-
-                    <button class="add-to-cart"
-                            data-name="Black Sheep"
-                            data-price="69.15">
-                        Add to Cart
-                    </button>
+                    <button class="add-to-cart" data-name="Black Sheep" data-price="69.15">Add to Cart</button>
                 </div>
 
-                <!-- PRODUCT 4 -->
-                <div class="burger-card">
-                    <img
-                        src="images/vegan-burger.png"
-                        alt="Vegan Burger"
-                    >
+                <div class="burger-card" data-category="vegetarian">
+                    <img src="images/vegan-burger.png" alt="Vegan Burger">
                     <div class="rating">
                         <button class="star-button active" data-value="1">★</button>
                         <button class="star-button active" data-value="2">★</button>
@@ -189,35 +161,175 @@
                         <h3>Vegan Burger</h3>
                         <button class="favorite">♡</button>
                     </div>
-                    <p class="description">
-                        A tasty plant-based burger with fresh ingredients.
-                    </p>
+                    <p class="description">A tasty plant-based burger with fresh ingredients.</p>
                     <span class="price">₱89.25</span>
-
-                    <button class="add-to-cart"
-                            data-name="Vegan Burger"
-                            data-price="99.15">
-                        Add to Cart
-                    </button>
+                    <button class="add-to-cart" data-name="Vegan Burger" data-price="89.25">Add to Cart</button>
                 </div>
+
+                <!-- CHICKEN BURGERS -->
+
+                <div class="burger-card" data-category="chicken">
+                    <img src="images/spicy-chicken.png" alt="Spicy Chicken Burger">
+                    <div class="rating">
+                        <button class="star-button active" data-value="1">★</button><button class="star-button active" data-value="2">★</button><button class="star-button active" data-value="3">★</button><button class="star-button active" data-value="4">★</button><button class="star-button active" data-value="5">★</button>
+                    </div>
+                    <div class="product-title"><h3>Spicy Chicken Burger</h3><button class="favorite">♡</button></div>
+                    <p class="description">Crispy chicken with a spicy sauce and fresh lettuce.</p>
+                    <span class="price">₱109.00</span>
+                    <button class="add-to-cart" data-name="Spicy Chicken Burger" data-price="109.00">Add to Cart</button>
+                </div>
+
+                <div class="burger-card" data-category="chicken">
+                    <img src="images/cheesy-chicken.png" alt="Cheesy Chicken Burger">
+                    <div class="rating">
+                        <button class="star-button active" data-value="1">★</button><button class="star-button active" data-value="2">★</button><button class="star-button active" data-value="3">★</button><button class="star-button active" data-value="4">★</button><button class="star-button active" data-value="5">★</button>
+                    </div>
+                    <div class="product-title"><h3>Cheesy Chicken Burger</h3><button class="favorite">♡</button></div>
+                    <p class="description">Juicy chicken topped with melted cheese and creamy sauce.</p>
+                    <span class="price">₱119.00</span>
+                    <button class="add-to-cart" data-name="Cheesy Chicken Burger" data-price="119.00">Add to Cart</button>
+                </div>
+
+                <div class="burger-card" data-category="chicken">
+                    <img src="images/bbq-chicken.png" alt="BBQ Chicken Burger">
+                    <div class="rating">
+                        <button class="star-button active" data-value="1">★</button><button class="star-button active" data-value="2">★</button><button class="star-button active" data-value="3">★</button><button class="star-button active" data-value="4">★</button><button class="star-button active" data-value="5">★</button>
+                    </div>
+                    <div class="product-title"><h3>BBQ Chicken Burger</h3><button class="favorite">♡</button></div>
+                    <p class="description">Grilled chicken with smoky barbecue sauce.</p>
+                    <span class="price">₱115.00</span>
+                    <button class="add-to-cart" data-name="BBQ Chicken Burger" data-price="115.00">Add to Cart</button>
+                </div>
+
+                <!-- BEEF BURGERS -->
+
+                <div class="burger-card" data-category="beef">
+                    <img src="images/classic-beef.png" alt="Classic Beef Burger">
+                    <div class="rating">
+                        <button class="star-button active" data-value="1">★</button><button class="star-button active" data-value="2">★</button><button class="star-button active" data-value="3">★</button><button class="star-button active" data-value="4">★</button><button class="star-button active" data-value="5">★</button>
+                    </div>
+                    <div class="product-title"><h3>Classic Beef Burger</h3><button class="favorite">♡</button></div>
+                    <p class="description">A classic juicy beef patty with lettuce and cheese.</p>
+                    <span class="price">₱99.00</span>
+                    <button class="add-to-cart" data-name="Classic Beef Burger" data-price="99.00">Add to Cart</button>
+                </div>
+
+                <div class="burger-card" data-category="beef">
+                    <img src="images/double-beef.png" alt="Double Beef Burger">
+                    <div class="rating">
+                        <button class="star-button active" data-value="1">★</button><button class="star-button active" data-value="2">★</button><button class="star-button active" data-value="3">★</button><button class="star-button active" data-value="4">★</button><button class="star-button active" data-value="5">★</button>
+                    </div>
+                    <div class="product-title"><h3>Double Beef Burger</h3><button class="favorite">♡</button></div>
+                    <p class="description">Two juicy beef patties stacked with cheese.</p>
+                    <span class="price">₱149.00</span>
+                    <button class="add-to-cart" data-name="Double Beef Burger" data-price="149.00">Add to Cart</button>
+                </div>
+
+                <div class="burger-card" data-category="beef">
+                    <img src="images/mushroom-beef.png" alt="Mushroom Beef Burger">
+                    <div class="rating">
+                        <button class="star-button active" data-value="1">★</button><button class="star-button active" data-value="2">★</button><button class="star-button active" data-value="3">★</button><button class="star-button active" data-value="4">★</button><button class="star-button active" data-value="5">★</button>
+                    </div>
+                    <div class="product-title"><h3>Mushroom Beef Burger</h3><button class="favorite">♡</button></div>
+                    <p class="description">Beef patty topped with mushrooms and creamy sauce.</p>
+                    <span class="price">₱129.00</span>
+                    <button class="add-to-cart" data-name="Mushroom Beef Burger" data-price="129.00">Add to Cart</button>
+                </div>
+
+                <div class="burger-card" data-category="beef">
+                    <img src="images/bbq-beef.png" alt="BBQ Beef Burger">
+                    <div class="rating">
+                        <button class="star-button active" data-value="1">★</button><button class="star-button active" data-value="2">★</button><button class="star-button active" data-value="3">★</button><button class="star-button active" data-value="4">★</button><button class="star-button active" data-value="5">★</button>
+                    </div>
+                    <div class="product-title"><h3>BBQ Beef Burger</h3><button class="favorite">♡</button></div>
+                    <p class="description">Grilled beef with smoky barbecue sauce and onions.</p>
+                    <span class="price">₱119.00</span>
+                    <button class="add-to-cart" data-name="BBQ Beef Burger" data-price="119.00">Add to Cart</button>
+                </div>
+
+                <!-- BACON BURGERS -->
+
+                <div class="burger-card" data-category="bacon">
+                    <img src="images/double-bacon.png" alt="Double Bacon Burger">
+                    <div class="rating">
+                        <button class="star-button active" data-value="1">★</button><button class="star-button active" data-value="2">★</button><button class="star-button active" data-value="3">★</button><button class="star-button active" data-value="4">★</button><button class="star-button active" data-value="5">★</button>
+                    </div>
+                    <div class="product-title"><h3>Double Bacon Burger</h3><button class="favorite">♡</button></div>
+                    <p class="description">A beef burger loaded with extra crispy bacon.</p>
+                    <span class="price">₱139.00</span>
+                    <button class="add-to-cart" data-name="Double Bacon Burger" data-price="139.00">Add to Cart</button>
+                </div>
+
+                <div class="burger-card" data-category="bacon">
+                    <img src="images/bacon-cheese.png" alt="Bacon Cheese Burger">
+                    <div class="rating">
+                        <button class="star-button active" data-value="1">★</button><button class="star-button active" data-value="2">★</button><button class="star-button active" data-value="3">★</button><button class="star-button active" data-value="4">★</button><button class="star-button active" data-value="5">★</button>
+                    </div>
+                    <div class="product-title"><h3>Bacon Cheese Burger</h3><button class="favorite">♡</button></div>
+                    <p class="description">Beef patty with crispy bacon and melted cheese.</p>
+                    <span class="price">₱129.00</span>
+                    <button class="add-to-cart" data-name="Bacon Cheese Burger" data-price="129.00">Add to Cart</button>
+                </div>
+
+                <div class="burger-card" data-category="bacon">
+                    <img src="images/bbq-bacon.png" alt="BBQ Bacon Burger">
+                    <div class="rating">
+                        <button class="star-button active" data-value="1">★</button><button class="star-button active" data-value="2">★</button><button class="star-button active" data-value="3">★</button><button class="star-button active" data-value="4">★</button><button class="star-button active" data-value="5">★</button>
+                    </div>
+                    <div class="product-title"><h3>BBQ Bacon Burger</h3><button class="favorite">♡</button></div>
+                    <p class="description">Smoky barbecue beef burger with crispy bacon.</p>
+                    <span class="price">₱139.00</span>
+                    <button class="add-to-cart" data-name="BBQ Bacon Burger" data-price="139.00">Add to Cart</button>
+                </div>
+
+                <!-- VEGETARIAN BURGERS -->
+
+                <div class="burger-card" data-category="vegetarian">
+                    <img src="images/mushroom-veggie.png" alt="Mushroom Veggie Burger">
+                    <div class="rating">
+                        <button class="star-button active" data-value="1">★</button><button class="star-button active" data-value="2">★</button><button class="star-button active" data-value="3">★</button><button class="star-button active" data-value="4">★</button><button class="star-button active" data-value="5">★</button>
+                    </div>
+                    <div class="product-title"><h3>Mushroom Veggie Burger</h3><button class="favorite">♡</button></div>
+                    <p class="description">A plant-based patty topped with sautéed mushrooms.</p>
+                    <span class="price">₱119.00</span>
+                    <button class="add-to-cart" data-name="Mushroom Veggie Burger" data-price="119.00">Add to Cart</button>
+                </div>
+
+                <div class="burger-card" data-category="vegetarian">
+                    <img src="images/cheesy-veggie.png" alt="Cheesy Veggie Burger">
+                    <div class="rating">
+                        <button class="star-button active" data-value="1">★</button><button class="star-button active" data-value="2">★</button><button class="star-button active" data-value="3">★</button><button class="star-button active" data-value="4">★</button><button class="star-button active" data-value="5">★</button>
+                    </div>
+                    <div class="product-title"><h3>Cheesy Veggie Burger</h3><button class="favorite">♡</button></div>
+                    <p class="description">A veggie patty with melted cheese and fresh lettuce.</p>
+                    <span class="price">₱109.00</span>
+                    <button class="add-to-cart" data-name="Cheesy Veggie Burger" data-price="109.00">Add to Cart</button>
+                </div>
+
+                <div class="burger-card" data-category="vegetarian">
+                    <img src="images/spicy-veggie.png" alt="Spicy Veggie Burger">
+                    <div class="rating">
+                        <button class="star-button active" data-value="1">★</button><button class="star-button active" data-value="2">★</button><button class="star-button active" data-value="3">★</button><button class="star-button active" data-value="4">★</button><button class="star-button active" data-value="5">★</button>
+                    </div>
+                    <div class="product-title"><h3>Spicy Veggie Burger</h3><button class="favorite">♡</button></div>
+                    <p class="description">A plant-based burger with a spicy, flavorful sauce.</p>
+                    <span class="price">₱109.00</span>
+                    <button class="add-to-cart" data-name="Spicy Veggie Burger" data-price="109.00">Add to Cart</button>
+                </div>
+
             </div>
         </section>
-    
     </main>
 
-    <!-- SHOPPING CART - VERSION 2 -->
+    <!-- SHOPPING CART -->
     <section class="cart-section container" id="cart">
         <h2>YOUR SHOPPING CART</h2>
-
         <div id="cart-items">
             <p class="empty-cart">Your cart is currently empty.</p>
         </div>
-
         <div class="cart-summary">
             <h3>Total: <span id="cart-total">₱0.00</span></h3>
-            <button id="checkout-btn" disabled>
-                Proceed to Checkout
-            </button>
+            <button id="checkout-btn" disabled>Proceed to Checkout</button>
         </div>
     </section>
 
@@ -225,17 +337,13 @@
     <div class="checkout-overlay" id="checkout-overlay">
         <div class="checkout-popup">
             <button class="close-checkout" id="close-checkout">&times;</button>
-
             <h2>CHECKOUT</h2>
             <p class="checkout-subtitle">Review your order before confirming.</p>
-
             <div id="checkout-items"></div>
-
             <div class="checkout-total">
                 <h3>Total Amount:</h3>
                 <span id="checkout-total">₱0.00</span>
             </div>
-
             <div class="checkout-buttons">
                 <button id="cancel-checkout">Cancel</button>
                 <button id="confirm-order">Confirm Order</button>
