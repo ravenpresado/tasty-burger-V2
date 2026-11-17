@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
 
     // STAR RATING FUNCTION
@@ -13,11 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 stars.forEach(function (item) {
                     const starValue = Number(item.dataset.value);
 
-                    if (starValue <= selectedRating) {
-                        item.classList.add("active");
-                    } else {
-                        item.classList.remove("active");
-                    }
+                    item.classList.toggle("active", starValue <= selectedRating);
                 });
             });
         });
@@ -29,23 +26,77 @@ document.addEventListener("DOMContentLoaded", function () {
     favoriteButtons.forEach(function (button) {
         button.addEventListener("click", function () {
             button.classList.toggle("active");
-
-            if (button.classList.contains("active")) {
-                button.textContent = "♥";
-            } else {
-                button.textContent = "♡";
-            }
+            button.textContent = button.classList.contains("active") ? "♥" : "♡";
         });
     });
 
-    // ADD TO CART FUNCTION
+    // SHOPPING CART
     let cart = [];
 
     const addToCartButtons = document.querySelectorAll(".add-to-cart");
     const cartCount = document.getElementById("cart-count");
+    const cartItems = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+    const checkoutButton = document.getElementById("checkout-btn");
 
+    function updateCart() {
+
+        // UPDATE CART COUNTER
+        const totalItems = cart.reduce(function (total, item) {
+            return total + item.quantity;
+        }, 0);
+
+        cartCount.textContent = totalItems;
+
+        // EMPTY CART
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<p class="empty-cart">Your cart is currently empty.</p>';
+            cartTotal.textContent = "₱0.00";
+            checkoutButton.disabled = true;
+            return;
+        }
+
+        // DISPLAY CART ITEMS
+        cartItems.innerHTML = "";
+
+        cart.forEach(function (item, index) {
+
+            const cartItem = document.createElement("div");
+            cartItem.className = "cart-item";
+
+            cartItem.innerHTML = `
+                <div class="cart-item-info">
+                    <h3>${item.name}</h3>
+                    <p>₱${item.price.toFixed(2)} each</p>
+                </div>
+
+                <div class="cart-item-controls">
+                    <button class="quantity-btn decrease" data-index="${index}">−</button>
+                    <span>${item.quantity}</span>
+                    <button class="quantity-btn increase" data-index="${index}">+</button>
+                    <button class="remove-item" data-index="${index}">Remove</button>
+                </div>
+
+                <strong>₱${(item.price * item.quantity).toFixed(2)}</strong>
+            `;
+
+            cartItems.appendChild(cartItem);
+        });
+
+        // CALCULATE TOTAL
+        const totalPrice = cart.reduce(function (total, item) {
+            return total + item.price * item.quantity;
+        }, 0);
+
+        cartTotal.textContent = "₱" + totalPrice.toFixed(2);
+        checkoutButton.disabled = false;
+    }
+
+    // ADD TO CART
     addToCartButtons.forEach(function (button) {
+
         button.addEventListener("click", function () {
+
             const name = button.dataset.name;
             const price = Number(button.dataset.price);
 
@@ -63,14 +114,50 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             }
 
-            const totalItems = cart.reduce(function (total, item) {
-                return total + item.quantity;
-            }, 0);
+            updateCart();
 
-            cartCount.textContent = totalItems;
+            // BUTTON FEEDBACK
+            const originalText = button.textContent;
+            button.textContent = "Added! ✓";
+            button.classList.add("added");
 
-            alert(name + " added to cart!");
+            setTimeout(function () {
+                button.textContent = originalText;
+                button.classList.remove("added");
+            }, 800);
         });
     });
+
+    // CART QUANTITY AND REMOVE BUTTONS
+    cartItems.addEventListener("click", function (event) {
+
+        const index = Number(event.target.dataset.index);
+
+        if (event.target.classList.contains("increase")) {
+            cart[index].quantity++;
+        }
+
+        if (event.target.classList.contains("decrease")) {
+            cart[index].quantity--;
+
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+        }
+
+        if (event.target.classList.contains("remove-item")) {
+            cart.splice(index, 1);
+        }
+
+        updateCart();
+    });
+
+    // CHECKOUT BUTTON
+    checkoutButton.addEventListener("click", function () {
+        alert("Thank you for choosing Tasty Burger! Checkout functionality is coming soon.");
+    });
+
+    // INITIAL CART DISPLAY
+    updateCart();
 
 });
