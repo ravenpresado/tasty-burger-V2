@@ -483,3 +483,150 @@ nav a:hover::after {
         transition-duration: 0.01ms !important;
     }
 }
+
+
+/* =========================
+   SHOPPING CART - VERSION 2
+========================= */
+
+.cart-section {
+    background: #ffffff;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.cart-section h2 {
+    color: #c64b37;
+    font-size: 26px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.empty-cart {
+    text-align: center;
+    color: #777777;
+    padding: 25px;
+    font-size: 16px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.cart-item-info h3 {
+    color: #252525;
+    margin-bottom: 6px;
+}
+
+.cart-item-info p {
+    color: #777777;
+    font-size: 14px;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.quantity-btn {
+    background: #f8f5ef;
+    color: #a75b43;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.quantity-btn:hover {
+    background: #a75b43;
+    color: #ffffff;
+}
+
+.remove-item {
+    background: transparent;
+    color: #c64b37;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.remove-item:hover {
+    text-decoration: underline;
+}
+
+.cart-item > strong {
+    color: #a75b43;
+    white-space: nowrap;
+}
+
+.cart-summary {
+    text-align: right;
+    margin-top: 25px;
+}
+
+.cart-summary h3 {
+    color: #252525;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.cart-summary h3 span {
+    color: #a75b43;
+}
+
+#checkout-btn {
+    background: #a75b43;
+    color: #ffffff;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#checkout-btn:hover:not(:disabled) {
+    background: #874631;
+    transform: translateY(-3px);
+}
+
+#checkout-btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+/* MOBILE SHOPPING CART */
+@media (max-width: 600px) {
+    .cart-section {
+        padding: 20px 15px;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item-controls {
+        flex-wrap: wrap;
+    }
+
+    .cart-summary {
+        text-align: center;
+    }
+}
+
