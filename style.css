@@ -630,3 +630,156 @@ nav a:hover::after {
     }
 }
 
+
+/* =========================
+   CHECKOUT POPUP
+========================= */
+
+.checkout-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.checkout-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.checkout-popup {
+    background: #ffffff;
+    width: 100%;
+    max-width: 480px;
+    padding: 30px;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    animation: popupAppear 0.35s ease;
+}
+
+.checkout-popup h2 {
+    color: #c64b37;
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 26px;
+}
+
+.checkout-subtitle {
+    text-align: center;
+    color: #777777;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.close-checkout {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    color: #777777;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.close-checkout:hover {
+    color: #c64b37;
+}
+
+.checkout-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eeeeee;
+    color: #252525;
+}
+
+.checkout-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 2px solid #eeeeee;
+}
+
+.checkout-total h3 {
+    color: #252525;
+    font-size: 17px;
+}
+
+.checkout-total span {
+    color: #a75b43;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.checkout-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.checkout-buttons button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#cancel-checkout {
+    background: #f8f5ef;
+    color: #a75b43;
+}
+
+#cancel-checkout:hover {
+    background: #eee5d9;
+}
+
+#confirm-order {
+    background: #a75b43;
+    color: #ffffff;
+}
+
+#confirm-order:hover {
+    background: #874631;
+    transform: translateY(-2px);
+}
+
+/* POPUP ANIMATIONS */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popupAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* MOBILE CHECKOUT */
+@media (max-width: 480px) {
+    .checkout-popup {
+        padding: 25px 18px;
+    }
+
+    .checkout-buttons {
+        flex-direction: column;
+    }
+}
+

@@ -188,6 +188,28 @@
         </div>
     </section>
 
+    <!-- CHECKOUT POPUP -->
+    <div class="checkout-overlay" id="checkout-overlay">
+        <div class="checkout-popup">
+            <button class="close-checkout" id="close-checkout">&times;</button>
+
+            <h2>CHECKOUT</h2>
+            <p class="checkout-subtitle">Review your order before confirming.</p>
+
+            <div id="checkout-items"></div>
+
+            <div class="checkout-total">
+                <h3>Total Amount:</h3>
+                <span id="checkout-total">₱0.00</span>
+            </div>
+
+            <div class="checkout-buttons">
+                <button id="cancel-checkout">Cancel</button>
+                <button id="confirm-order">Confirm Order</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

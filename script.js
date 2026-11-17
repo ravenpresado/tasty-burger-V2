@@ -152,25 +152,67 @@ document.addEventListener("DOMContentLoaded", function () {
         updateCart();
     });
 
-    // CHECKOUT BUTTON
+    
+// CHECKOUT POPUP
+const checkoutOverlay = document.getElementById("checkout-overlay");
+const checkoutItems = document.getElementById("checkout-items");
+const checkoutTotal = document.getElementById("checkout-total");
+const closeCheckout = document.getElementById("close-checkout");
+const cancelCheckout = document.getElementById("cancel-checkout");
+const confirmOrder = document.getElementById("confirm-order");
+
+// OPEN CHECKOUT POPUP
 checkoutButton.addEventListener("click", function () {
 
-    let orderDetails = "YOUR ORDER SUMMARY\n\n";
+    checkoutItems.innerHTML = "";
 
     cart.forEach(function (item) {
-        orderDetails += item.name + " x" + item.quantity +
-            " - ₱" + (item.price * item.quantity).toFixed(2) + "\n";
+
+        const checkoutItem = document.createElement("div");
+        checkoutItem.className = "checkout-item";
+
+        checkoutItem.innerHTML = `
+            <span>${item.name} x${item.quantity}</span>
+            <strong>₱${(item.price * item.quantity).toFixed(2)}</strong>
+        `;
+
+        checkoutItems.appendChild(checkoutItem);
     });
 
     const totalPrice = cart.reduce(function (total, item) {
         return total + item.price * item.quantity;
     }, 0);
 
-    orderDetails += "\nTotal: ₱" + totalPrice.toFixed(2);
-    orderDetails += "\n\nThank you for choosing Tasty Burger!";
+    checkoutTotal.textContent = "₱" + totalPrice.toFixed(2);
 
-    alert(orderDetails);
+    checkoutOverlay.classList.add("active");
 });
+
+// CLOSE CHECKOUT POPUP
+function hideCheckout() {
+    checkoutOverlay.classList.remove("active");
+}
+
+closeCheckout.addEventListener("click", hideCheckout);
+cancelCheckout.addEventListener("click", hideCheckout);
+
+// CONFIRM ORDER
+confirmOrder.addEventListener("click", function () {
+
+    alert("Thank you for your order!\n\nYour order has been confirmed.");
+
+    cart = [];
+    updateCart();
+    hideCheckout();
+});
+
+// CLOSE WHEN CLICKING OUTSIDE THE POPUP
+checkoutOverlay.addEventListener("click", function (event) {
+    if (event.target === checkoutOverlay) {
+        hideCheckout();
+    }
+});
+
 
     // INITIAL CART DISPLAY
     updateCart();
