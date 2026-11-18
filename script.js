@@ -21,14 +21,72 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // FAVORITE HEART FUNCTION
-    const favoriteButtons = document.querySelectorAll(".favorite");
+   
+// FAVORITE HEART FUNCTION
+const favoriteButtons = document.querySelectorAll(".favorite");
 
-    favoriteButtons.forEach(function (button) {
+function displayFavorites() {
+    const favoritesItems = document.getElementById("favorites-items");
+    const favoriteCards = document.querySelectorAll(".burger-card");
+
+    favoritesItems.innerHTML = "";
+
+    const selectedFavorites = Array.from(favoriteCards).filter(function (card) {
+        return card.querySelector(".favorite").classList.contains("active");
+    });
+
+    if (selectedFavorites.length === 0) {
+        favoritesItems.innerHTML = `
+            <p class="empty-favorites">
+                You haven't added any favorite burgers yet.
+            </p>
+        `;
+        return;
+    }
+
+    selectedFavorites.forEach(function (card) {
+        const name = card.querySelector("h3").textContent;
+        const image = card.querySelector("img").getAttribute("src");
+        const price = card.querySelector(".price").textContent;
+
+        favoritesItems.innerHTML += `
+            <div class="favorite-item">
+                <img src="${image}" alt="${name}">
+                <div class="favorite-item-info">
+                    <h3>${name}</h3>
+                    <p>${price}</p>
+                </div>
+                <button class="remove-favorite" type="button">
+                    Remove
+                </button>
+            </div>
+        `;
+    });
+
+    favoritesItems.querySelectorAll(".remove-favorite").forEach(function (button, index) {
         button.addEventListener("click", function () {
-            button.classList.toggle("active");
-            button.textContent = button.classList.contains("active") ? "♥" : "♡";
+            const card = selectedFavorites[index];
+            const heart = card.querySelector(".favorite");
+
+            heart.classList.remove("active");
+            heart.textContent = "♡";
+
+            displayFavorites();
+            filterBurgers();
         });
     });
+}
+
+favoriteButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        button.classList.toggle("active");
+        button.textContent = button.classList.contains("active") ? "♥" : "♡";
+
+        displayFavorites();
+        filterBurgers();
+    });
+});
+
 
     // SHOPPING CART
     let cart = [];
@@ -298,3 +356,26 @@ burgerSearch.addEventListener("input", filterBurgers);
 
 });
 
+// FAVORITES POPUP
+const favoritesOverlay = document.getElementById("favorites-overlay");
+const openFavorites = document.getElementById("open-favorites");
+const closeFavorites = document.getElementById("close-favorites");
+
+// OPEN FAVORITES POPUP
+openFavorites.addEventListener("click", function () {
+    favoritesOverlay.classList.add("active");
+});
+
+// CLOSE FAVORITES POPUP
+function hideFavorites() {
+    favoritesOverlay.classList.remove("active");
+}
+
+closeFavorites.addEventListener("click", hideFavorites);
+
+// CLOSE WHEN CLICKING OUTSIDE THE POPUP
+favoritesOverlay.addEventListener("click", function (event) {
+    if (event.target === favoritesOverlay) {
+        hideFavorites();
+    }
+});

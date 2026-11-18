@@ -21,9 +21,10 @@
                 <a href="#menu">OUR MENU</a>
                 <a href="#shop">SHOP</a>
                 <a href="#contact">CONTACT</a>
-<button class="nav-favorites filter-btn" data-category="favorites" type="button">
+<button class="nav-favorites" id="open-favorites" type="button">
     ♡ FAVORITES
 </button>
+
 <button class="cart" id="open-cart" type="button">
     <svg width="20" height="20" viewBox="0 0 24 24"
          fill="none" stroke="currentColor" stroke-width="1.8">
@@ -342,6 +343,26 @@
         <div class="cart-summary">
             <h3>Total: <span id="cart-total">₱0.00</span></h3>
             <button id="checkout-btn" disabled>Proceed to Checkout</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- FAVORITES POPUP -->
+<div class="favorites-overlay" id="favorites-overlay">
+    <div class="favorites-popup">
+
+        <button class="close-favorites" id="close-favorites">&times;</button>
+
+        <h2>YOUR FAVORITES</h2>
+        <p class="favorites-subtitle">
+            Your favorite burgers in one place.
+        </p>
+
+        <div id="favorites-items">
+            <p class="empty-favorites">
+                You haven't added any favorite burgers yet.
+            </p>
         </div>
 
     </div>
