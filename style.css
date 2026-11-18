@@ -1127,3 +1127,18 @@ nav .cart:hover {
     }
 }
 
+/* FAVORITES NAVIGATION BUTTON */
+.nav-favorites {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    cursor: pointer;
+    padding: 0;
+}
+
+.nav-favorites:hover {
+    color: #c64b37;
+}
