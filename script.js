@@ -149,20 +149,24 @@ cartOverlay.addEventListener("click", function (event) {
             cartItem.className = "cart-item";
 
             cartItem.innerHTML = `
-                <div class="cart-item-info">
-                    <h3>${item.name}</h3>
-                    <p>₱${item.price.toFixed(2)} each</p>
-                </div>
+    <div class="cart-item-details">
+        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
 
-                <div class="cart-item-controls">
-                    <button class="quantity-btn decrease" data-index="${index}">−</button>
-                    <span>${item.quantity}</span>
-                    <button class="quantity-btn increase" data-index="${index}">+</button>
-                    <button class="remove-item" data-index="${index}">Remove</button>
-                </div>
+        <div class="cart-item-info">
+            <h3>${item.name}</h3>
+            <p>₱${item.price.toFixed(2)} each</p>
+        </div>
+    </div>
 
-                <strong>₱${(item.price * item.quantity).toFixed(2)}</strong>
-            `;
+    <div class="cart-item-controls">
+        <button class="quantity-btn decrease" data-index="${index}">−</button>
+        <span>${item.quantity}</span>
+        <button class="quantity-btn increase" data-index="${index}">+</button>
+        <button class="remove-item" data-index="${index}">Remove</button>
+    </div>
+
+    <strong>₱${(item.price * item.quantity).toFixed(2)}</strong>
+`;
 
             cartItems.appendChild(cartItem);
         });
@@ -177,40 +181,44 @@ cartOverlay.addEventListener("click", function (event) {
     }
 
     // ADD TO CART
-    addToCartButtons.forEach(function (button) {
+addToCartButtons.forEach(function (button) {
 
-        button.addEventListener("click", function () {
+    button.addEventListener("click", function () {
 
-            const name = button.dataset.name;
-            const price = Number(button.dataset.price);
+        const name = button.dataset.name;
+        const price = Number(button.dataset.price);
 
-            const existingProduct = cart.find(function (item) {
-                return item.name === name;
-            });
+        const burgerCard = button.closest(".burger-card");
+        const image = burgerCard.querySelector("img").getAttribute("src");
 
-            if (existingProduct) {
-                existingProduct.quantity++;
-            } else {
-                cart.push({
-                    name: name,
-                    price: price,
-                    quantity: 1
-                });
-            }
-
-            updateCart();
-
-            // BUTTON FEEDBACK
-            const originalText = button.textContent;
-            button.textContent = "Added! ✓";
-            button.classList.add("added");
-
-            setTimeout(function () {
-                button.textContent = originalText;
-                button.classList.remove("added");
-            }, 800);
+        const existingProduct = cart.find(function (item) {
+            return item.name === name;
         });
+
+        if (existingProduct) {
+            existingProduct.quantity++;
+        } else {
+            cart.push({
+                name: name,
+                price: price,
+                image: image,
+                quantity: 1
+            });
+        }
+
+        updateCart();
+
+        // BUTTON FEEDBACK
+        const originalText = button.textContent;
+        button.textContent = "Added! ✓";
+        button.classList.add("added");
+
+        setTimeout(function () {
+            button.textContent = originalText;
+            button.classList.remove("added");
+        }, 800);
     });
+});
 
     // CART QUANTITY AND REMOVE BUTTONS
     cartItems.addEventListener("click", function (event) {
@@ -254,11 +262,19 @@ checkoutButton.addEventListener("click", function () {
 
         const checkoutItem = document.createElement("div");
         checkoutItem.className = "checkout-item";
-
+        
         checkoutItem.innerHTML = `
+    <div class="checkout-item-details">
+        <img src="${item.image}" alt="${item.name}" class="checkout-item-image">
+
+        <div>
             <span>${item.name} x${item.quantity}</span>
-            <strong>₱${(item.price * item.quantity).toFixed(2)}</strong>
-        `;
+            <p>₱${item.price.toFixed(2)} each</p>
+        </div>
+    </div>
+
+    <strong>₱${(item.price * item.quantity).toFixed(2)}</strong>
+`;
 
         checkoutItems.appendChild(checkoutItem);
     });
