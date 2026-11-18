@@ -244,7 +244,6 @@ checkoutOverlay.addEventListener("click", function (event) {
     updateCart();
 
 // BURGER SEARCH AND CATEGORY FILTERS
-
 const burgerSearch = document.getElementById("burger-search");
 const filterButtons = document.querySelectorAll(".filter-btn");
 const burgerCards = document.querySelectorAll(".burger-card");
@@ -259,14 +258,20 @@ function filterBurgers() {
 
         const burgerName = card.querySelector("h3").textContent.toLowerCase();
         const category = card.dataset.category;
+        const favoriteButton = card.querySelector(".favorite");
 
         const matchesSearch = burgerName.includes(searchText);
 
         const matchesCategory =
             selectedCategory === "all" ||
+            selectedCategory === "favorites" ||
             category === selectedCategory;
 
-        if (matchesSearch && matchesCategory) {
+        const matchesFavorite =
+            selectedCategory !== "favorites" ||
+            favoriteButton.classList.contains("active");
+
+        if (matchesSearch && matchesCategory && matchesFavorite) {
             card.style.display = "";
         } else {
             card.style.display = "none";
@@ -274,18 +279,13 @@ function filterBurgers() {
     });
 }
 
-// SEARCH BURGERS
-burgerSearch.addEventListener("input", filterBurgers);
-
-// FILTER BY CATEGORY
 filterButtons.forEach(function (button) {
-
     button.addEventListener("click", function () {
 
         selectedCategory = button.dataset.category;
 
-        filterButtons.forEach(function (item) {
-            item.classList.remove("active");
+        filterButtons.forEach(function (btn) {
+            btn.classList.remove("active");
         });
 
         button.classList.add("active");
@@ -294,4 +294,7 @@ filterButtons.forEach(function (button) {
     });
 });
 
+burgerSearch.addEventListener("input", filterBurgers);
+
 });
+
