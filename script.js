@@ -39,6 +39,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const cartTotal = document.getElementById("cart-total");
     const checkoutButton = document.getElementById("checkout-btn");
 
+
+// CART POPUP
+const cartOverlay = document.getElementById("cart-overlay");
+const openCart = document.getElementById("open-cart");
+const closeCart = document.getElementById("close-cart");
+
+// OPEN CART POPUP
+openCart.addEventListener("click", function () {
+    cartOverlay.classList.add("active");
+});
+
+// CLOSE CART POPUP
+function hideCart() {
+    cartOverlay.classList.remove("active");
+}
+
+closeCart.addEventListener("click", hideCart);
+
+// CLOSE WHEN CLICKING OUTSIDE THE POPUP
+cartOverlay.addEventListener("click", function (event) {
+    if (event.target === cartOverlay) {
+        hideCart();
+    }
+});
+
+
     function updateCart() {
 
         // UPDATE CART COUNTER
@@ -216,5 +242,56 @@ checkoutOverlay.addEventListener("click", function (event) {
 
     // INITIAL CART DISPLAY
     updateCart();
+
+// BURGER SEARCH AND CATEGORY FILTERS
+
+const burgerSearch = document.getElementById("burger-search");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const burgerCards = document.querySelectorAll(".burger-card");
+
+let selectedCategory = "all";
+
+function filterBurgers() {
+
+    const searchText = burgerSearch.value.toLowerCase().trim();
+
+    burgerCards.forEach(function (card) {
+
+        const burgerName = card.querySelector("h3").textContent.toLowerCase();
+        const category = card.dataset.category;
+
+        const matchesSearch = burgerName.includes(searchText);
+
+        const matchesCategory =
+            selectedCategory === "all" ||
+            category === selectedCategory;
+
+        if (matchesSearch && matchesCategory) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+// SEARCH BURGERS
+burgerSearch.addEventListener("input", filterBurgers);
+
+// FILTER BY CATEGORY
+filterButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+        selectedCategory = button.dataset.category;
+
+        filterButtons.forEach(function (item) {
+            item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        filterBurgers();
+    });
+});
 
 });
