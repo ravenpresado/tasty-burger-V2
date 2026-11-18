@@ -269,6 +269,7 @@ checkoutButton.addEventListener("click", function () {
 
     checkoutTotal.textContent = "₱" + totalPrice.toFixed(2);
 
+    cartOverlay.classList.remove("active"); 
     checkoutOverlay.classList.add("active");
 });
 
