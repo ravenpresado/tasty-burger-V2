@@ -1243,17 +1243,20 @@ nav .nav-favorites:hover {
 }
 
 .remove-favorite {
-    background: #c64b37;
-    color: white;
-    border: none;
+    background: #ffffff;
+    color: #c64b37;
+    border: 1px solid #c64b37;
     padding: 9px 13px;
     border-radius: 6px;
     cursor: pointer;
     font-size: 12px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 .remove-favorite:hover {
-    background: #a93626;
+    background: #c64b37;
+    color: #ffffff;
 }
 
 .empty-favorites {
